@@ -327,7 +327,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 1.39276, y: 1.39276, z: 3.4819}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2022674784}
@@ -388,7 +388,7 @@ SpriteRenderer:
   m_SortingLayerID: -556270787
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: eec59a02016a0184a96f820cab043a08, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 73d35190cf236d940a72a00118116b3c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -471,7 +471,7 @@ SpriteRenderer:
   m_SortingLayerID: -556270787
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f04b533c6c441554580dcf8251209472, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 11dd60830f818d440b8b8a4fe5a59acf, type: 3}
   m_Color: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -492,7 +492,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3716, y: 1.227, z: 1}
+  m_LocalScale: {x: 1.4089898, y: 1.4004978, z: 1.1414}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2022674784}
@@ -525,7 +525,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6, y: 0, z: 0}
-  m_LocalScale: {x: 1.04745, y: 1.05498, z: 1}
+  m_LocalScale: {x: 1.1955594, y: 1.2041543, z: 1.1414}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2022674784}
@@ -571,7 +571,7 @@ SpriteRenderer:
   m_SortingLayerID: -556270787
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1a5d46e1f3a782d4da7f01155b99fcaa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8aafb25826882a644a1f4506d01c9c33, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
