@@ -7,6 +7,7 @@ public class BlindGazerScript : MonoBehaviour
 {
     public float speed = 5f;
     public float rangeUpAndDown = 3f;
+    public bool GoingUp = true;
 
     // Start is called before the first frame update
     void Start()
@@ -25,11 +26,22 @@ public class BlindGazerScript : MonoBehaviour
     {
         Vector3 currentPosition = transform.position;
 
-        if(Mathf.Abs(currentPosition.y) >= rangeUpAndDown)
+        if(currentPosition.y >= rangeUpAndDown && GoingUp)
         {
-            speed = -speed;
+            GoingUp = false;
+        }
+        else if (currentPosition.y <= -rangeUpAndDown && !GoingUp)
+        {
+            GoingUp = true;
         }
 
-        transform.position += Vector3.down * speed * Time.deltaTime;
+        if (GoingUp)
+        {
+            transform.position += Vector3.up * speed * Time.deltaTime;
+        }
+        else
+        {
+            transform.position += Vector3.down * speed * Time.deltaTime;
+        }
     }
 }
