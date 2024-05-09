@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class AxyScript : MonoBehaviour
@@ -31,5 +32,10 @@ public class AxyScript : MonoBehaviour
     void UpdateState(Vector2 movVector)
     {
         transform.Translate(movVector);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        EditorApplication.Beep();
     }
 }
