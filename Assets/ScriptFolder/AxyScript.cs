@@ -7,31 +7,23 @@ public class AxyScript : MonoBehaviour
 {
     // Start is called before the first frame update
     public float speed = 5f; // Desired speed
+    public InputController inputController;
+    public PhysicsController physicsController;
+    public StateController stateController;
+    public AudioController audioController;
     void Start()
     {
-
+        // Obtener referencias a los controladores
+        inputController = GetComponent<InputController>();
+        physicsController = GetComponent<PhysicsController>();
+        stateController = GetComponent<StateController>();
+        audioController = GetComponent<AudioController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 MovementVector = ProcessInput();
-        UpdateState(MovementVector);
-    }
-
-    Vector2 ProcessInput()
-    {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-
-        Vector2 movement = new Vector2(horizontalInput, verticalInput).normalized * speed * Time.deltaTime;
-
-        return movement;
-    }
-
-    void UpdateState(Vector2 movVector)
-    {
-        transform.Translate(movVector);
+        inputController.updateMovements(speed);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
