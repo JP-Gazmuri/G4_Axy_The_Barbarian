@@ -1,38 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BlindGazerScript : MonoBehaviour
+public class BlindGazer : MonoBehaviour
 {
-    public float speed = 5f;
-    public float rangeUpAndDown = 3f;
-    private bool goingUp = true;
+    private BlindGazerMovement movementScript;
+    private BlindGazerUpdateState updateStateScript;
+
+    void Start()
+    {
+        movementScript = GetComponent<BlindGazerMovement>();
+        if (movementScript == null)
+        {
+            Debug.LogError("BlindGazerMovement script is missing!");
+        }
+
+        updateStateScript = GetComponent<BlindGazerUpdateState>();
+        if (updateStateScript == null)
+        {
+            Debug.LogError("BlindGazerUpdateState script is missing!");
+        }
+    }
 
     void Update()
     {
-        UpdateState();
-    }
-
-    void UpdateState()
-    {
-        Vector3 currentPosition = transform.position;
-
-        if (currentPosition.y >= rangeUpAndDown && goingUp)
+        // Update state
+        if (updateStateScript != null)
         {
-            goingUp = false;
-        }
-        else if (currentPosition.y <= -rangeUpAndDown && !goingUp)
-        {
-            goingUp = true;
-        }
-
-        if (goingUp)
-        {
-            transform.position += Vector3.up * speed * Time.deltaTime;
-        }
-        else
-        {
-            transform.position += Vector3.down * speed * Time.deltaTime;
+            updateStateScript.UpdateState(movementScript);
         }
     }
 }
