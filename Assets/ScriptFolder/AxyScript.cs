@@ -1,33 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class AxyScript : MonoBehaviour
 {
-    // Start is called before the first frame update
     public float speed = 5f; // Desired speed
-    public InputController inputController;
-    public PhysicsController physicsController;
-    public StateController stateController;
-    public AudioController audioController;
+    private InputController inputController;
+    private PhysicsController physicsController;
+    private StateController stateController;
+    private AudioController audioController;
+
     void Start()
     {
-        // Obtener referencias a los controladores
-        inputController = GetComponent<InputController>();
-        physicsController = GetComponent<PhysicsController>();
-        stateController = GetComponent<StateController>();
-        audioController = GetComponent<AudioController>();
+        // Get references to the controllers or add them if they don't exist
+        inputController = gameObject.AddComponent<InputController>();
+        physicsController = gameObject.AddComponent<PhysicsController>();
+        stateController = gameObject.AddComponent<StateController>();
+        audioController = gameObject.AddComponent<AudioController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        inputController.updateMovements(speed);
+        Vector2 movement = inputController.ProcessInput(speed);
+        physicsController.Move(movement);     
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        EditorApplication.Beep();
+        audioController.PlayCollisionSound();
     }
 }
