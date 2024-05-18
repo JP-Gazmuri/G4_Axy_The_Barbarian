@@ -6,6 +6,8 @@ TagManager:
   tags:
   - BlindGazer
   - DrunkSkeleton
+  - Exit
+  - Win
   layers:
   - Default
   - TransparentFX
