@@ -8,11 +8,12 @@ public class BlindGazerScript : MonoBehaviour
     public float speed = 5f;
     public float rangeUpAndDown = 3f;
     public bool GoingUp = true;
+    public WinController Lose;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Lose = GetComponent<WinController>();
     }
 
     // Update is called once per frame
@@ -26,7 +27,7 @@ public class BlindGazerScript : MonoBehaviour
     {
         Vector3 currentPosition = transform.position;
 
-        if(currentPosition.y >= rangeUpAndDown && GoingUp)
+        if (currentPosition.y >= rangeUpAndDown && GoingUp)
         {
             GoingUp = false;
         }
@@ -42,6 +43,15 @@ public class BlindGazerScript : MonoBehaviour
         else
         {
             transform.position += Vector3.down * speed * Time.deltaTime;
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Verifica si el objeto que colisiona es el jugador
+        if (collision.gameObject.tag == "Player")
+        {
+            // Llama al método que maneja la victoria
+            Lose.Loser();
         }
     }
 }

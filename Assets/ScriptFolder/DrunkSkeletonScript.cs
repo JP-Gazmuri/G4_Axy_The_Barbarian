@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 public class DrunkSkeletonScript : MonoBehaviour
@@ -9,11 +10,13 @@ public class DrunkSkeletonScript : MonoBehaviour
     public float projectileLifetime = 3f; // Tiempo de vida del proyectil
     public float shootingOffset = 1.5f; // Desfase de disparo en relación con el movimiento del otro enemigo
 
+    public WinController Lose;
     private float lastShootTime;
 
     void Start()
     {
         lastShootTime = Time.time; // Inicializa el tiempo del último disparo al inicio
+        Lose = GetComponent<WinController>();
     }
 
     void Update()
@@ -37,5 +40,14 @@ public class DrunkSkeletonScript : MonoBehaviour
         Destroy(projectile, projectileLifetime);
 
         lastShootTime = Time.time; // Actualiza el tiempo del último disparo
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Verifica si el objeto que colisiona es el jugador
+        if (collision.gameObject.tag == "Player")
+        {
+            // Llama al método que maneja la victoria
+            Lose.Loser();
+        }
     }
 }

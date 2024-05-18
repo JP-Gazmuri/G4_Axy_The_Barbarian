@@ -43,3 +43,4 @@ public class AudioController : MonoBehaviour
 
     // Aquí implementarías la lógica para manejar el audio del jugador
 }
+
