@@ -5,10 +5,10 @@ using UnityEngine;
 public class AxyScript : MonoBehaviour
 {
     public float speed = 5f; // Desired speed
-    private InputController inputController;
-    private PhysicsController physicsController;
-    private StateController stateController;
-    private AudioController audioController;
+    public InputController inputController;
+    public PhysicsController physicsController;
+    public StateController stateController;
+    public AudioController audioController;
 
     void Start()
     {
