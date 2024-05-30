@@ -226,7 +226,6 @@ MonoBehaviour:
   Skeleton: {fileID: 1847817898}
   Blind: {fileID: 1096836645}
   WinImage: {fileID: 1522013392}
-  winner: {fileID: 0}
 --- !u!61 &277213007
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -708,7 +707,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ebdf9befe529154ba1ac6d121faeb89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lose: {fileID: 0}
 --- !u!212 &1096836648
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1316,7 +1314,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f06412c4869b7f948ba0e395bbcadcc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lose: {fileID: 0}
 --- !u!61 &1847817902
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1438,6 +1435,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2022674784}
+  - component: {fileID: 2022674785}
   m_Layer: 0
   m_Name: objetos
   m_TagString: Untagged
@@ -1470,6 +1468,18 @@ Transform:
   - {fileID: 1522013393}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2022674785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022674783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c65b2b053c393a41bb9febce3c93a99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2070559437 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1959611780555299440, guid: ef556a143ee6c6342bf201eec98811d9, type: 3}
