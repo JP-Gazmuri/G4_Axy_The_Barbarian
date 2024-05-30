@@ -6,24 +6,31 @@ using UnityEngine.SceneManagement;
 
 public class WinController : MonoBehaviour
 {
-    public void WinGame(GameObject Skeleton, GameObject Blind, GameObject WinImage)
+
+    private void Start()
     {
-        Debug.Log("¡Has ganado!");
-        if (Skeleton != null)
+        GlobalListener.Instance.OnWin += HandleWin;
+        GlobalListener.Instance.OnLose += HandleLose;
+    }
+
+    private void OnDestroy()
+    {
+        if (GlobalListener.Instance != null)
         {
-            Skeleton.SetActive(false);
-        }
-        if (Blind != null)
-        {
-            Blind.SetActive(false);
-        }
-        if (WinImage != null)
-        {
-            WinImage.SetActive(true);
+            GlobalListener.Instance.OnWin -= HandleWin;
+            GlobalListener.Instance.OnLose -= HandleLose;
         }
     }
-    public void Loser()
+
+    private void HandleWin()
     {
+        // Lógica cuando se gana
+        Debug.Log("¡Has ganado!");
+    }
+
+    private void HandleLose()
+    {
+        // Lógica cuando se pierde
         SceneManager.LoadScene(0);
     }
 }

@@ -670,6 +670,8 @@ GameObject:
   - component: {fileID: 1096836648}
   - component: {fileID: 1096836647}
   - component: {fileID: 1096836651}
+  - component: {fileID: 1096836653}
+  - component: {fileID: 1096836652}
   - component: {fileID: 1096836649}
   - component: {fileID: 1096836650}
   m_Layer: 0
@@ -706,9 +708,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ebdf9befe529154ba1ac6d121faeb89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.5
-  rangeUpAndDown: 3
-  GoingUp: 1
   Lose: {fileID: 0}
 --- !u!212 &1096836648
 SpriteRenderer:
@@ -846,6 +845,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d73fd9e7d0b6904a82f7214ed28d1ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1096836652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096836645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda412e5d923d49f58a09fa0c00e1a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangeUpAndDown: 3
+--- !u!114 &1096836653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096836645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad231f0a4a3e242b0869335220fca4e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
 --- !u!4 &1116342871 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1959611780555299440, guid: ef556a143ee6c6342bf201eec98811d9, type: 3}
@@ -1201,6 +1226,8 @@ GameObject:
   - component: {fileID: 1847817900}
   - component: {fileID: 1847817901}
   - component: {fileID: 1847817904}
+  - component: {fileID: 1847817906}
+  - component: {fileID: 1847817905}
   - component: {fileID: 1847817902}
   - component: {fileID: 1847817903}
   m_Layer: 0
@@ -1289,10 +1316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f06412c4869b7f948ba0e395bbcadcc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 7206416572340768247, guid: 897843cfcf01e5f459672b0d244dc86e, type: 3}
-  shootInterval: 2
-  projectileLifetime: 2
-  shootingOffset: 1.5
   Lose: {fileID: 0}
 --- !u!61 &1847817902
 BoxCollider2D:
@@ -1378,6 +1401,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d73fd9e7d0b6904a82f7214ed28d1ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1847817905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847817898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04b506b2a0d904644b44b408abbf81ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootInterval: 2
+--- !u!114 &1847817906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847817898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22f635df0ab1f4fc8a290161ed9fa76a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 7206416572340768247, guid: 897843cfcf01e5f459672b0d244dc86e, type: 3}
+  projectileLifetime: 3
+  shootingOffset: 1.5
 --- !u!1 &2022674783
 GameObject:
   m_ObjectHideFlags: 0
