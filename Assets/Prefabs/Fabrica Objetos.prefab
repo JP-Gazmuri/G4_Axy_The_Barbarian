@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3330269924411040253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2488924301008938767}
+  - component: {fileID: 1706239961159197493}
+  m_Layer: 0
+  m_Name: Fabrica Objetos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2488924301008938767
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3330269924411040253}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.32841465, y: -0.40488902, z: 0.0424003}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1706239961159197493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3330269924411040253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af8b70e0f0599f342b0c9fe8e2cb346e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WallPrefab: {fileID: 7554246609968309990, guid: ef556a143ee6c6342bf201eec98811d9, type: 3}
+  ExitPrefab: {fileID: 7258862907533253267, guid: afe37fb7a1bf73f47880e8dbe5494401, type: 3}
+  WinPrefab: {fileID: 7416777185089987702, guid: 086ea842848ad834aaa031cbd0da5ac1, type: 3}
+  BlindGazerPrefab: {fileID: 4095376389798709319, guid: 0f11035f741acc1459b9bdc53e60219d, type: 3}
+  DrunkSkeletonPrefab: {fileID: 5996822655888341331, guid: 10fc9b1acca78e448b4cbb5508fed4e4, type: 3}
+  MainCharacterPrefab: {fileID: 6211723906568073223, guid: b6cf93fd201b21043816f2f270c239cb, type: 3}

@@ -1,0 +1,6 @@
+win 0 0
+wall -10 0
+exit 4 4
+BlindGazer 50 2
+DrunkSkeleton 12 3
+MainCharacter 0 1
