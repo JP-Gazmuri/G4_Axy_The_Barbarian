@@ -10,38 +10,40 @@ public class ScriptCreadorNivel : MonoBehaviour
     {
         CargarNivel();
     }
-        void CargarNivel()
+
+    void CargarNivel()
+    {
+        string filePath = Path.Combine(Application.dataPath, "Niveles", EsquemaNivel);
+        if (File.Exists(filePath))
         {
-            string filePath = Path.Combine(Application.dataPath, "Niveles", EsquemaNivel);
-            if (File.Exists(filePath))
+            string[] lines = File.ReadAllLines(filePath);
+            foreach (string line in lines)
             {
-                string[] lines = File.ReadAllLines(filePath);
-                foreach (string line in lines)
+                string[] parts = line.Split(' ');
+                if (parts.Length == 4)
                 {
-                    string[] parts = line.Split(' ');
-                    if (parts.Length == 3)
+                    string type = parts[0];
+                    if (float.TryParse(parts[1], out float x) && float.TryParse(parts[2], out float y) && float.TryParse(parts[3], out float rotation))
                     {
-                        string type = parts[0];
-                        if (float.TryParse(parts[1], out float x) && float.TryParse(parts[2], out float y))
-                        {
-                            Vector2 position = new Vector2(x, y);
-                            FabricaObjetos.CrearObjeto(type, position);
-                        }
-                        else
-                        {
-                            Debug.LogError("Posicion invalida en linea: " + line);
-                        }
+                        Vector2 position = new Vector2(x, y);
+                        Quaternion rotationQuaternion = Quaternion.Euler(0f, 0f, rotation);
+                        FabricaObjetos.CrearObjeto(type, position, rotationQuaternion);
                     }
                     else
                     {
-                        Debug.LogError("Esquema mal hecho en la linea: " + line);
+                        Debug.LogError("Valores inválidos en la línea: " + line);
                     }
                 }
-            }
-            else
-            {
-                Debug.LogError("No esta el archivo en la carpeta adecuada: " + filePath);
+                else
+                {
+                    Debug.LogError("Esquema mal hecho en la línea: " + line);
+                }
             }
         }
-
+        else
+        {
+            Debug.LogError("El archivo no se encuentra en la carpeta adecuada: " + filePath);
+        }
     }
+}
+

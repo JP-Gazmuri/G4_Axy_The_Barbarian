@@ -9,31 +9,29 @@ public class ScriptFabricaObjetos : MonoBehaviour
     public GameObject DrunkSkeletonPrefab;
     public GameObject MainCharacterPrefab;
 
-    public GameObject CrearObjeto(string type, Vector2 position)
+    public GameObject CrearObjeto(string type, Vector2 position, Quaternion rotation)
     {
         GameObject prefab = null;
-        switch (type)
+        switch (type.ToLower())
         {
             case "wall":
                 prefab = WallPrefab;
                 break;
-            case "MainCharacter":
+            case "maincharacter":
                 prefab = MainCharacterPrefab;
                 break;
-            case "DrunkSkeleton":
+            case "drunkskeleton":
                 prefab = DrunkSkeletonPrefab;
                 break;
             case "win":
                 prefab = WinPrefab;
                 break;
-            case "BlindGazer":
+            case "blindgazer":
                 prefab = BlindGazerPrefab;
                 break;
             case "exit":
                 prefab = ExitPrefab;
                 break;
-
-
             default:
                 Debug.LogError("Unknown object type: " + type);
                 break;
@@ -41,9 +39,10 @@ public class ScriptFabricaObjetos : MonoBehaviour
 
         if (prefab != null)
         {
-            return Instantiate(prefab, position, Quaternion.identity);
+            return Instantiate(prefab, position, rotation);
         }
 
         return null;
     }
 }
+
