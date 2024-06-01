@@ -8,6 +8,7 @@ public class ScriptFabricaObjetos : MonoBehaviour
     public GameObject BlindGazerPrefab;
     public GameObject DrunkSkeletonPrefab;
     public GameObject MainCharacterPrefab;
+    public Transform parentObject;
 
     public GameObject CrearObjeto(string type, Vector2 position, Quaternion rotation)
     {
@@ -39,7 +40,7 @@ public class ScriptFabricaObjetos : MonoBehaviour
 
         if (prefab != null)
         {
-            return Instantiate(prefab, position, rotation);
+            return Instantiate(prefab, position, rotation, parentObject);
         }
 
         return null;
