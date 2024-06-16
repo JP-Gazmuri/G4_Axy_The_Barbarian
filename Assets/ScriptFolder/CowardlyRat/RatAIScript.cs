@@ -8,7 +8,9 @@ public class RatAIScript : MonoBehaviour
     public float newDirectionInterval = 1.0f;
     public float detectionRange = 5.0f;
     public float obstacleDetectionRange = 1.0f;
+    public float attackRange = 6.0f;
     public LayerMask obstacleLayerMask;
+    public DayNightCycle dayNightCycle;
 
     private float timer = 1.0f;
     private Transform player;
@@ -27,15 +29,25 @@ public class RatAIScript : MonoBehaviour
             Debug.LogError("Player not found!");
         }
 
+        if (dayNightCycle == null)
+        {
+            dayNightCycle = FindObjectOfType<DayNightCycle>();
+            if (dayNightCycle == null)
+            {
+                Debug.LogError("DayNightCycle script is missing!");
+            }
+        }
+
         rootNode = new IsPlayerInRangeNode(detectionRange, player,
-            new AvoidObstacleNode(obstacleDetectionRange, obstacleLayerMask, new RunAwayNode(player), new WanderNode(newDirectionInterval)),
+            new IsNightNode(dayNightCycle, new IsPlayerInRangeNode(attackRange, player, new AttackNode(player), new RunAwayNode(player)), new RunAwayNode(player)),
             new WanderNode(newDirectionInterval));
     }
 
-    public void updateState(CowardlyRatMovement movementScript)
+    public void UpdateState(CowardlyRatMovement movementScript)
     {
         if (player == null)
         {
+            Debug.LogError("Player reference is null in UpdateState.");
             return;
         }
 
@@ -66,6 +78,32 @@ public class RatAIScript : MonoBehaviour
         {
             float distanceToPlayer = Vector3.Distance(movementScript.transform.position, player.position);
             if (distanceToPlayer <= detectionRange)
+            {
+                trueNode.Execute(movementScript);
+            }
+            else
+            {
+                falseNode.Execute(movementScript);
+            }
+        }
+    }
+
+    public class IsNightNode : DecisionNode
+    {
+        private DayNightCycle dayNightCycle;
+        private DecisionNode trueNode;
+        private DecisionNode falseNode;
+
+        public IsNightNode(DayNightCycle dayNightCycle, DecisionNode trueNode, DecisionNode falseNode)
+        {
+            this.dayNightCycle = dayNightCycle;
+            this.trueNode = trueNode;
+            this.falseNode = falseNode;
+        }
+
+        public override void Execute(CowardlyRatMovement movementScript)
+        {
+            if (dayNightCycle.IsNight())
             {
                 trueNode.Execute(movementScript);
             }
@@ -163,6 +201,21 @@ public class RatAIScript : MonoBehaviour
             Vector3 randomDirection = new Vector3(Mathf.Cos(randomRadian), Mathf.Sin(randomRadian), 0);
             randomDirection.Normalize();
             return randomDirection;
+        }
+    }
+
+    public class AttackNode : DecisionNode
+    {
+        private Transform player;
+
+        public AttackNode(Transform player)
+        {
+            this.player = player;
+        }
+
+        public override void Execute(CowardlyRatMovement movementScript)
+        {
+            Debug.Log("Attacking the player!");
         }
     }
 }
