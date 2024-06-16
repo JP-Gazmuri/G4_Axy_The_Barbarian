@@ -7,6 +7,8 @@ public class RatAIScript : MonoBehaviour
     public bool isRunningAway = false;
     public float newDirectionInterval = 1.0f;
     public float detectionRange = 5.0f;
+    public float obstacleDetectionRange = 1.0f;
+    public LayerMask obstacleLayerMask;
 
     private float timer = 1.0f;
     private Transform player;
@@ -26,7 +28,7 @@ public class RatAIScript : MonoBehaviour
         }
 
         rootNode = new IsPlayerInRangeNode(detectionRange, player,
-            new RunAwayNode(player),
+            new AvoidObstacleNode(obstacleDetectionRange, obstacleLayerMask, new RunAwayNode(player), new WanderNode(newDirectionInterval)),
             new WanderNode(newDirectionInterval));
     }
 
@@ -71,6 +73,48 @@ public class RatAIScript : MonoBehaviour
             {
                 falseNode.Execute(movementScript);
             }
+        }
+    }
+
+    public class AvoidObstacleNode : DecisionNode
+    {
+        private float obstacleDetectionRange;
+        private LayerMask obstacleLayerMask;
+        private DecisionNode trueNode;
+        private DecisionNode falseNode;
+
+        public AvoidObstacleNode(float obstacleDetectionRange, LayerMask obstacleLayerMask, DecisionNode trueNode, DecisionNode falseNode)
+        {
+            this.obstacleDetectionRange = obstacleDetectionRange;
+            this.obstacleLayerMask = obstacleLayerMask;
+            this.trueNode = trueNode;
+            this.falseNode = falseNode;
+        }
+
+        public override void Execute(CowardlyRatMovement movementScript)
+        {
+            Vector3 currentDirection = movementScript.directionMovement;
+            RaycastHit2D hit = Physics2D.Raycast(movementScript.transform.position, currentDirection, obstacleDetectionRange, obstacleLayerMask);
+
+            if (hit.collider != null)
+            {
+                Vector3 newDirection = PickRandomDirection();
+                movementScript.setDirection(newDirection);
+                trueNode.Execute(movementScript);
+            }
+            else
+            {
+                falseNode.Execute(movementScript);
+            }
+        }
+
+        private Vector3 PickRandomDirection()
+        {
+            float randomAngle = Random.Range(0, 360);
+            float randomRadian = randomAngle * Mathf.Deg2Rad;
+            Vector3 randomDirection = new Vector3(Mathf.Cos(randomRadian), Mathf.Sin(randomRadian), 0);
+            randomDirection.Normalize();
+            return randomDirection;
         }
     }
 
