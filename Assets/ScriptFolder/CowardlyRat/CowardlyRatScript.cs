@@ -27,7 +27,7 @@ public class CowardlyRatScript : MonoBehaviour
     {
         if (updateStateScript != null)
         {
-            updateStateScript.updateState(movementScript);
+            updateStateScript.UpdateState(movementScript);
         }
     }
 }
